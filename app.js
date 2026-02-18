@@ -8,6 +8,10 @@ document.addEventListener('DOMContentLoaded', function() {
     if (valueInput) {
         valueInput.addEventListener('input', function() {
             let value = parseInt(this.value) || 0;
+            if (value > 100) {
+                this.value = 100;
+                value = 100;
+            }
             progress.setValue(value);
         });
     }
