@@ -1,0 +1,47 @@
+.progress-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 90px;
+    transition: opacity 0.3s ease;
+}
+
+.progress-wrapper.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.progress-circle {
+    width: 130px;
+    height: 130px;
+    transform: rotate(-90deg); 
+}
+
+.progress-circle.spinning {
+    animation: spin 1s linear infinite;
+}
+
+.progress-bg {
+    fill: none;
+    stroke: #e5e5ea;
+    stroke-width: 9;
+    stroke-linecap: butt;
+}
+
+.progress-bar {
+    fill: none;
+    stroke: #007AFF;
+    stroke-width: 9;
+    stroke-linecap: butt;
+    stroke-dasharray: 314.159; 
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 0.3s ease;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(-90deg);
+    }
+    to {
+        transform: rotate(270deg);
+    }
+}
