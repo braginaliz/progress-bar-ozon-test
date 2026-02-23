@@ -1,8 +1,8 @@
-class Progress {
-    constructor(config) {
-        this.container = typeof config === 'string' 
-            ? document.querySelector(config) 
-            : config.container || config;
+export class Progress {
+    constructor(container) {
+        this.container = typeof container === 'string' 
+            ? document.querySelector(container) 
+            : container;
         
         if (!this.container) {
             throw new Error('Progress: container  not found');
@@ -16,7 +16,6 @@ class Progress {
             throw new Error('Progress:  elements not found');
         }
         
-        this.value = 100;
         this.isAnimated = false;
         this.isHidden = false;
         this.circumference = 2 * Math.PI * 50; 
@@ -26,7 +25,6 @@ class Progress {
     setValue(value) {
         value = Math.max(0, Math.min(100, value));
         this.value = value;
-        
         const offset = this.circumference * (1 - value / 100);
         this.progressBar.style.strokeDashoffset = offset;
     }

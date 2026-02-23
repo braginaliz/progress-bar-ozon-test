@@ -1,3 +1,5 @@
+import { Progress } from "./script.js";
+
 document.addEventListener('DOMContentLoaded', function() {
     const progress = new Progress('.container');
     progress.setValue(100);
@@ -6,16 +8,25 @@ document.addEventListener('DOMContentLoaded', function() {
     const hideToggle = document.getElementById('hide');
 
     if (valueInput) {
-        valueInput.addEventListener('input', function() {
-            let value = parseInt(this.value) || 0;
-            if (value > 100) {
-                this.value = 100;
-                value = 100;
+        valueInput.addEventListener('input', function(event) {
+            let value = parseInt(event.target.value, 10);
+            
+            if (isNaN(value)) {
+                value = 0;
             }
+            
+            if (value > 100) {
+                value = 100;
+                event.target.value = 100;
+            } else if (value < 0) {
+                value = 0;
+                event.target.value = 0;
+            }
+            
             progress.setValue(value);
         });
     }
-    
+
     if (animateToggle) {
         animateToggle.addEventListener('change', function() {
             progress.setAnimated(this.checked);
@@ -30,3 +41,4 @@ document.addEventListener('DOMContentLoaded', function() {
     
     window.progressAPI = progress;
 });
+
