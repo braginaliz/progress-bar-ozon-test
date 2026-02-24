@@ -27,6 +27,7 @@ export class Progress {
         this.value = value;
         const offset = this.circumference * (1 - value / 100);
         this.progressBar.style.strokeDashoffset = offset;
+        return value;
     }
 
     setAnimated(animated) {
