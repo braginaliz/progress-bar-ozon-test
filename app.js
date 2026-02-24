@@ -11,19 +11,19 @@ document.addEventListener('DOMContentLoaded', function() {
         valueInput.addEventListener('input', function(event) {
             let value = parseInt(event.target.value, 10);
             
-            if (isNaN(value)) {
-                value = 0;
-            }
+            // if (isNaN(value)) {
+            //     value = 0;
+            // }
             
-            if (value > 100) {
-                value = 100;
-                event.target.value = 100;
-            } else if (value < 0) {
-                value = 0;
-                event.target.value = 0;
-            }
+            // if (value > 100) {
+            //     value = 100;
+            //     event.target.value = 100;
+            // } else if (value < 0) {
+            //     value = 0;
+            //     event.target.value = 0;
+            // }
             
-            progress.setValue(value);
+            event.target.value = progress.setValue(value);
         });
     }
 
